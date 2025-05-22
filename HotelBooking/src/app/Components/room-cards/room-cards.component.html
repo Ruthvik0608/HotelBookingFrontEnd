@@ -1,0 +1,59 @@
+<div class="container mt-4">
+  <h3 class="text-center fw-bold text-white mb-4"
+      style="background: linear-gradient(to right, #0f0c29, #302b63, #24243e); padding: 10px; border-radius: 8px;">
+    Available Rooms
+  </h3>
+
+  <!-- Loader -->
+  <div *ngIf="loading" class="text-center text-white">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="error" class="alert alert-danger text-center fw-bold">
+    {{error}}
+  </div>
+
+  <!-- Room Cards -->
+  <div class="row g-4" *ngIf="rooms.length">
+    <div class="col-lg-4 col-md-6" *ngFor="let room of rooms">
+      <div class="card h-100 shadow-lg rounded-4 border-0"
+           style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2);">
+        <img [src]="room.imageURL || 'assets/images/default-room.jpg'" 
+             class="card-img-top rounded"
+             [alt]="room.type"
+             style="height: 220px; object-fit: cover;">
+        <div class="card-body">
+          <h5 class="card-title text-primary fw-bold">{{room.type}}</h5>
+          <p class="card-text">
+            <i class="bi bi-cash-stack text-success"></i> 
+            <span class="fw-bold" style="font-size: 1.2rem;">₹{{room.price}}</span>
+          </p>
+          <p class="card-text">
+            <i class="bi bi-door-closed-fill text-warning"></i> 
+            Availability: 
+            <span class="badge bg-success px-3 py-2">{{room.availability}}</span>
+          </p>
+          <p class="card-text">
+            <i class="bi bi-list-check text-info"></i> Features:
+          </p>
+          <ul class="list-unstyled">
+            <li *ngFor="let feature of room.features?.split(',')" class="d-flex align-items-center gap-2">
+              <i class="bi bi-check-circle-fill text-success"></i> 
+              <span class="text-black">{{feature.trim()}}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer text-center">
+          <button class="btn text-white w-100 shadow-lg rounded-pill"
+                  style="background: linear-gradient(to right, #ff512f, #dd2476); font-size: 18px; font-weight: bold; border: none;"
+                  (click)="onBookNow(room.roomID)">
+            Book Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

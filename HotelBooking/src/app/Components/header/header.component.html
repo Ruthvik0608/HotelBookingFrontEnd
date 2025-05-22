@@ -1,0 +1,38 @@
+<header class="bg-dark py-3 shadow-lg sticky-top">
+  <div class="container d-flex justify-content-between align-items-center">
+    <a routerLink="/" class="d-flex align-items-center text-white fw-bold fs-4 text-decoration-none">
+      <img src="https://tse2.mm.bing.net/th/id/OIP.1fVCjRTMnnqEbO-_cnIOnAHaHa?rs=1&pid=ImgDetMain" 
+           alt="Smart Hotel Booking Logo" 
+           width="50" height="50" 
+           class="rounded-circle me-2">
+      Smart Hotel Booking
+    </a>
+
+    <ul class="nav">
+      <li class="nav-item">
+        <a (click)="navigateToHome()" class="nav-link text-white">Home</a>
+      </li>
+
+      <!-- User Authentication Section -->
+      <li class="nav-item dropdown" *ngIf="isLoggedIn">
+        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+          <img src="https://tse2.mm.bing.net/th/id/OIP.Zvs5IHgOO5kip7A32UwZJgHaHa?rs=1&pid=ImgDetMain" 
+               alt="Profile" 
+               width="30" height="30" 
+               class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end shadow">
+          <!-- <li><a routerLink="/profile/my-info" class="dropdown-item">My Info</a></li> -->
+          <li><a (click)="navigateToRecentBookings()" class="dropdown-item">Recent Bookings</a></li>
+          <!-- <li><a routerLink="/profile/edit-profile" class="dropdown-item">Edit Profile</a></li> -->
+          <li><hr class="dropdown-divider"></li>
+          <li><a href="#" (click)="logout()" class="dropdown-item text-danger">Logout</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item" *ngIf="!isLoggedIn">
+        <button class="btn btn-primary ms-3" (click)="navigateToLogin()">Login</button>
+      </li>
+    </ul>
+  </div>
+</header>

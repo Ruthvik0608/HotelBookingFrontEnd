@@ -1,0 +1,55 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg rounded-4 border-0">
+        <!-- Card Header -->
+        <div class="card-header bg-primary text-white text-center rounded-top">
+          <h3 class="mb-0 fw-bold">
+            <i class="bi bi-calendar-check me-2"></i> Room Booking
+          </h3>
+        </div>
+        
+        <!-- Card Body -->
+        <div class="card-body p-4">
+          <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+            <!-- Check-in Date -->
+            <div class="mb-4">
+              <label for="checkInDate" class="form-label fw-semibold text-dark">
+                <i class="bi bi-box-arrow-in-right text-primary me-2"></i> Check-in Date
+              </label>
+              <input type="date" 
+                     class="form-control form-control-lg rounded-3 shadow-sm border-1"
+                     id="checkInDate" 
+                     formControlName="checkInDate">
+            </div>
+
+            <!-- Check-out Date -->
+            <div class="mb-4">
+              <label for="checkOutDate" class="form-label fw-semibold text-dark">
+                <i class="bi bi-box-arrow-right text-warning me-2"></i> Check-out Date
+              </label>
+              <input type="date" 
+                     class="form-control form-control-lg rounded-3 shadow-sm border-1"
+                     id="checkOutDate" 
+                     formControlName="checkOutDate">
+            </div>
+
+            <!-- Confirm Booking Button -->
+            <button type="submit" 
+                    class="btn btn-success btn-lg w-100 fw-bold rounded-pill shadow"
+                    [disabled]="!bookingForm.valid">
+              <i class="bi bi-check-circle-fill me-2"></i> Confirm Booking
+            </button>
+          </form>
+        </div>
+
+        <!-- Card Footer -->
+        <div class="card-footer bg-light text-center py-3 rounded-bottom">
+          <p class="mb-0 text-muted">
+            <i class="bi bi-info-circle me-2"></i> Secure & Instant Confirmation
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

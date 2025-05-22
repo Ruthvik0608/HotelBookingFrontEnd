@@ -1,0 +1,263 @@
+<div class="container my-4 admin-dashboard">
+  <!-- Header -->
+  <div
+    class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4"
+  >
+    <h1 class="h3 text-primary fw-bold">Admin Dashboard</h1>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light px-3 rounded shadow-sm"
+    >
+      <ul class="navbar-nav flex-row gap-3">
+        <li class="nav-item">
+          <a
+            class="nav-link fw-semibold text-primary"
+            (click)="scrollToSection('bookings')"
+            >Bookings</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link fw-semibold text-primary"
+            (click)="scrollToSection('customers')"
+            >User Details</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link fw-semibold text-primary"
+            (click)="scrollToSection('hotels')"
+            >Hotels</a
+          >
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link fw-semibold text-primary" (click)="scrollToSection('categories')">Room Categories</a>
+        </li> -->
+        <li class="nav-item">
+          <a
+            class="nav-link fw-semibold text-primary"
+            (click)="scrollToSection('reviews')"
+            >Reviews</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="row text-center mb-4">
+    <div class="col-md-4 mb-3">
+      <div class="card summary-card shadow-sm">
+        <div class="card-body">
+          <p class="summary-title">Total No. of Users</p>
+          <h3 class="summary-value text-primary">{{ totalUsers }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <div class="card summary-card shadow-sm">
+        <div class="card-body">
+          <p class="summary-title">Total No. of Hotels</p>
+          <h3 class="summary-value text-success">{{ totalHotels }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <div class="card summary-card shadow-sm">
+        <div class="card-body">
+          <p class="summary-title">No. of Managers</p>
+          <h3 class="summary-value text-warning">{{ totalManagers }}</h3>
+          <!-- <button class="btn btn-primary mt-3" (click)="openAddManagerForm()">Add Manager</button> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <div class="card summary-card shadow-sm">
+        <div class="card-body">
+          <p class="summary-title">No. of Admins</p>
+          <h3 class="summary-value text-warning">{{ totalAdmins }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Section -->
+  <!-- Doughnut Chart -->
+  <!-- Charts Section -->
+  <div class="row my-4">
+    <div class="col-md-6 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <canvas 
+            baseChart 
+            [data]="barChartData" 
+            [options]="barChartOptions" 
+            [type]="barChartType" 
+            style="width: 100%; height: 300px;">
+          </canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <canvas 
+            baseChart 
+            [data]="doughnutChartData" 
+            [options]="doughnutChartOptions" 
+            [type]="doughnutChartType" 
+            style="width: 100%; height: 300px;">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tables -->
+  <section id="bookings" class="mb-5">
+    <h4 class="section-title">Manage Bookings</h4>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle">
+        <thead class="table-dark text-light">
+          <tr>
+            <th>Booking ID</th>
+            <th>User ID</th>
+            <th>Room ID</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of bookings | slice : 0 : visibleRows">
+            <td>{{ booking.bookingID }}</td>
+            <td>{{ booking.userID }}</td>
+            <td>{{ booking.roomID }}</td>
+            <td>{{ booking.checkInDate | date : "yyyy-MM-dd" }}</td>
+            <td>{{ booking.checkOutDate | date : "yyyy-MM-dd" }}</td>
+            <td>{{ booking.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-end mt-2">
+      <span
+        *ngIf="visibleRows < bookings.length"
+        class="btn btn-primary"
+        (click)="seeMore()"
+        >See More</span
+      >
+    </div>
+  </section>
+
+  <section id="customers" class="mb-5">
+    <h4 class="section-title">User Details</h4>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead class="table-dark text-light">
+          <tr>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customers | slice : 0 : visibleRows">
+            <td>{{ customer.userID }}</td>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.contactNumber }}</td>
+            <td>{{ customer.role }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-end mt-2">
+      <button
+        *ngIf="visibleRows < customers.length"
+        class="btn btn-primary"
+        (click)="seeMore()"
+      >
+        See More
+      </button>
+    </div>
+  </section>
+
+  <section id="hotels" class="mb-5">
+    <h4 class="section-title">Hotels</h4>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead class="table-dark text-light">
+          <tr>
+            <th>Hotel ID</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Manager ID</th>
+            <th>Amenities</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hotel of hotels | slice : 0 : visibleRows">
+            <td>{{ hotel.hotelID }}</td>
+            <td>{{ hotel.name }}</td>
+            <td>{{ hotel.location }}</td>
+            <td>{{ hotel.managerID }}</td>
+            <td>{{ hotel.amenities }}</td>
+            <td>{{ hotel.rating }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="d-flex justify-content-between mt-3">
+      <button *ngIf="visibleRows < hotels.length" class="btn btn-primary" (click)="seeMore()">See More</button>
+      <button class="btn btn-success" (click)="openAddHotelForm()">Add New Hotel</button>
+    </div>
+  </section>
+  
+
+  <section id="reviews" class="mb-5">
+    <h4 class="section-title">Hotel Reviews</h4>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="table-dark text-light">
+          <tr>
+            <th>Review ID</th>
+            <th>User ID</th>
+            <th>Hotel ID</th>
+            <th>Rating</th>
+            <th>Comment</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let review of reviews | slice : 0 : visibleRows">
+            <td>{{ review.reviewID }}</td>
+            <td>{{ review.userID }}</td>
+            <td>{{ review.hotelID }}</td>
+            <td>{{ review.rating }}</td>
+            <td>{{ review.comment }}</td>
+            <td>{{ review.timestamp | date : "yyyy-MM-dd" }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-end mt-2">
+      <button
+        *ngIf="visibleRows < reviews.length"
+        class="btn btn-primary"
+        (click)="seeMore()"
+      >
+        See More
+      </button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center border-top pt-3 mt-4 text-muted">
+    &copy; 2025 Hotel Booking System
+  </footer>
+</div>

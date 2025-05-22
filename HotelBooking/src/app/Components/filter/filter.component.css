@@ -1,0 +1,15 @@
+.hover-effect {
+  transition: background-color 0.3s ease;
+}
+
+.hover-effect:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.form-check-input {
+  transform: scale(1.2);
+}
+
+.rating-slider input[type="range"] {
+  cursor: pointer;
+}

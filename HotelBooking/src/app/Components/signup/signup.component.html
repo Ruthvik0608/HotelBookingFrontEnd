@@ -1,0 +1,46 @@
+<div class="container-fluid d-flex justify-content-center align-items-center"
+     style="height: 100vh; width: 100vw; background: linear-gradient(to right, #0f0c29, #302b63, #24243e);">
+    <div class="card p-4 shadow-lg rounded-4 border-0"
+         style="max-width: 400px; width: 100%; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2);">
+        <h2 class="text-center mb-4 text-white fw-bold">
+            <i class="bi bi-person-plus-fill me-2"></i> Create an Account
+        </h2>
+        <p class="text-center text-light">Join us and start your journey</p>
+
+        <form (ngSubmit)="signup()" #signupForm="ngForm">
+            <div class="mb-3">
+                <input type="text" [(ngModel)]="userData.name" name="name"
+                       class="form-control rounded-pill shadow-sm" placeholder="Full Name" required
+                       style="background: rgba(255, 255, 255, 0.2); border: none; color: white;">
+            </div>
+            <div class="mb-3">
+                <input type="email" [(ngModel)]="userData.email" name="email"
+                       class="form-control rounded-pill shadow-sm" placeholder="Email Address" required
+                       style="background: rgba(255, 255, 255, 0.2); border: none; color: white;">
+            </div>
+            <div class="mb-3">
+                <input type="text" [(ngModel)]="userData.contactNumber" name="phoneNumber"
+                       class="form-control rounded-pill shadow-sm" placeholder="Phone Number" required
+                       style="background: rgba(255, 255, 255, 0.2); border: none; color: white;">
+            </div>
+            <div class="mb-3">
+                <input type="password" [(ngModel)]="userData.password" name="password"
+                       class="form-control rounded-pill shadow-sm" placeholder="Create Password" required
+                       style="background: rgba(255, 255, 255, 0.2); border: none; color: white;">
+            </div>
+            <button type="submit" class="btn w-100 text-white shadow-lg rounded-pill"
+                    style="background: linear-gradient(to right, #ff512f, #dd2476); font-size: 18px; font-weight: bold; border: none;"
+                    [disabled]="signupForm.invalid">
+                Sign Up
+            </button>
+        </form>
+
+        <div class="text-danger mt-3 text-center fw-bold" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+        <div class="text-center mt-4">
+            <p class="text-light">Already have an account?  
+                <a [routerLink]="'/app-login'" class="text-warning fw-bold" style="text-decoration: none;">Log in</a>
+            </p>
+        </div>
+    </div>
+</div>

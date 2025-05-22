@@ -1,0 +1,49 @@
+.hover-transform {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-transform:hover {
+  transform: translateY(-5px);
+}
+
+.card {
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+}
+
+.min-vh-50 {
+  min-height: 50vh;
+}
+
+.badge {
+  font-weight: 500;
+  padding: 0.5em 1em;
+}
+
+.btn-primary {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+}
+
+.amenities-section .badge {
+  font-size: 0.85rem;
+  padding: 0.5em 1em;
+  background-color: rgba(0,0,0,.03);
+  border-color: rgba(0,0,0,.08);
+}
+
+.filter-container {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.spinner-grow {
+  width: 3rem;
+  height: 3rem;
+}

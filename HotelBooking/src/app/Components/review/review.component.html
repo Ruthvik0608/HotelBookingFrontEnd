@@ -1,0 +1,23 @@
+<form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Rating:</label>
+      <div class="stars d-flex gap-2">
+        <span *ngFor="let star of [1,2,3,4,5]" (click)="setRating(star)"
+              class="fs-3 cursor-pointer text-warning">
+          {{ star <= (reviewForm.get('rating')?.value || 0) ? '★' : '☆' }}
+        </span>
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Comment:</label>
+      <textarea formControlName="comment" maxlength="120"
+                class="form-control shadow-sm rounded-3" rows="3"
+                placeholder="Share your experience..."></textarea>
+    </div>
+  
+    <button type="submit" class="btn btn-success w-100 rounded-pill shadow">
+      <i class="bi bi-plus-circle-fill me-2"></i> Add Review
+    </button>
+  </form>
+  

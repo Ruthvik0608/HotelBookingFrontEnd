@@ -1,0 +1,85 @@
+<div class="container-fluid py-5" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">
+  <div class="container">
+    <div class="row g-3">
+      
+      <!-- Filter Section (Left Sidebar) -->
+      <div class="col-lg-3 col-md-4">
+        <div class="bg-white p-4 rounded-lg shadow-lg border border-light">
+          <h3 class="text-primary mb-4 border-bottom pb-2">
+            <i class="bi bi-funnel-fill me-2"></i>Filter Hotels
+          </h3>
+          <app-filter [allHotels]="allHotels" class="filter-container"></app-filter>
+        </div>
+      </div>
+
+      <!-- Hotel Cards Grid (Right Side) -->
+      <div class="col-lg-9 col-md-8">
+        <!-- Loading Spinner -->
+        <div *ngIf="loading" class="d-flex justify-content-center align-items-center min-vh-50">
+          <div class="spinner-grow text-primary" role="status">
+            <span class="visually-hidden">Loading hotels...</span>
+          </div>
+        </div>
+
+        <!-- Hotel Cards (Compact Horizontal Layout) -->
+        <div class="row g-3" *ngIf="!loading">
+          <div class="col-12" *ngFor="let hotel of displayedHotels">
+            <div class="card shadow-lg border-0 rounded-4 p-3">
+              <div class="d-flex align-items-center">
+                
+                <!-- Hotel Image (Left Side, Bigger) -->
+                <div class="flex-shrink-0">
+                  <div class="position-relative rounded overflow-hidden shadow-sm">
+                    <img [src]="hotel.imageURL || 'assets/images/default-hotel.jpg'"
+                         [alt]="hotel.name"
+                         class="img-fluid"
+                         style="width: 350px; height: 250px; object-fit: cover;">
+                    <div class="position-absolute top-0 end-0 m-3">
+                      <span class="badge bg-primary fs-6 px-3 py-2 rounded-pill">
+                        <i class="bi bi-star-fill me-1"></i>{{ hotel.rating }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Hotel Details (Compact Right Side) -->
+                <div class="flex-grow-1 ms-3">
+                  <h4 class="text-primary fw-bold mb-2">{{ hotel.name }}</h4>
+                  <p class="text-muted"><i class="bi bi-geo-alt-fill text-danger me-2"></i>{{ hotel.location }}</p>
+
+                  <!-- Amenities -->
+                  <div class="mb-2">
+                    <h6 class="text-info"><i class="bi bi-list-check me-2"></i> Amenities</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                      <span *ngFor="let amenity of hotel.amenities?.split(',')"
+                            class="badge bg-light text-dark border fs-6 px-2 py-1">
+                        <i class="bi bi-check-circle-fill text-success me-1"></i>
+                        {{ amenity.trim() }}
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- View Rooms Button -->
+                  <div class="text-end mt-3">
+                    <button class="btn btn-primary btn-sm rounded-pill shadow"
+                            (click)="getRoomsForHotel(hotel.hotelID)">
+                      <i class="bi bi-door-open me-2"></i>View Rooms
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- No Results Message -->
+        <div *ngIf="!loading && displayedHotels.length === 0"
+             class="alert alert-info text-center my-5 fs-5">
+          <i class="bi bi-info-circle-fill me-2"></i> No hotels match your selected filters.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

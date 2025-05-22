@@ -1,0 +1,54 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+/* Buttons */
+button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  margin: auto;
+}
+@media (max-width: 768px) {
+  .hotel-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-section {
+    padding: 50px 10px;
+  }
+
+  .search-form {
+    width: 100%;
+  }
+}
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  background: white;
+}

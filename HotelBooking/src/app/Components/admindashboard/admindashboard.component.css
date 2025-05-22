@@ -1,0 +1,104 @@
+/* General Styling */
+.admin-dashboard {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Header */
+  .admin-dashboard h1 {
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  
+  .navbar {
+    background: #f8f9fa;
+    border-radius: 10px;
+  }
+  
+  /* Navigation Links */
+  .nav-link {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .nav-link:hover {
+    color: #0056b3 !important;
+  }
+  
+  /* Summary Cards */
+  .summary-card {
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .summary-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .summary-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #555;
+  }
+  
+  .summary-value {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  
+  /* Charts */
+  .card {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  /* Tables */
+  .table {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .table th {
+    background: #0056b3 !important;
+    color: white;
+    font-size: 16px;
+  }
+  
+  .table td {
+    font-size: 15px;
+    vertical-align: middle;
+  }
+  
+  /* Sections */
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #003366;
+    border-bottom: 2px solid #007bff;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+  
+  /* Buttons */
+  .btn {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn:hover {
+    opacity: 0.9;
+  }
+  
+  /* Footer */
+  footer {
+    font-size: 14px;
+    background: #f8f9fa;
+    padding: 12px;
+    border-top: 2px solid #007bff;
+  }
+
+  canvas {
+    width: 100% !important;
+    height: 300px !important;
+    max-height: 300px;
+  }
+  
+  

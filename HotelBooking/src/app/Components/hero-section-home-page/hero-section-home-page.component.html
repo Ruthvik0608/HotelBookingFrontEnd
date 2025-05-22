@@ -1,0 +1,24 @@
+<div class="hero-section position-relative d-flex flex-column justify-content-center align-items-center text-center vh-100">
+  
+  <!-- Background Slideshow -->
+  <div class="slideshow-container">
+    <div class="slideshow-item" style="background-image: url('https://images.pexels.com/photos/18524069/pexels-photo-18524069/free-photo-of-a-hotel-sign-with-the-word-hotel-in-silver.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+    <div class="slideshow-item" style="background-image: url('https://images.pexels.com/photos/19947936/pexels-photo-19947936/free-photo-of-interior-of-a-modern-hotel-restaurant.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+    <div class="slideshow-item" style="background-image: url('https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+    <div class="slideshow-item" style="background-image: url('https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content-container">
+    <h1 class="display-3 fw-bold text-white mb-3" style="text-shadow: 2px 2px 5px rgba(0,0,0,0.7);">
+      Welcome to Our Hotel Booking Service
+    </h1>
+    <p class="fs-4 text-white mb-4">Find the perfect hotel for your stay.</p>
+    <button 
+      (click)="hotelDataService.fetchAllHotels(); router.navigate(['/app-hotel-card-display'])"
+      class="btn btn-light btn-lg px-5 py-2 shadow-sm border-0 rounded-pill"
+    >
+      <i class="bi bi-building me-2"></i> Explore Hotels
+    </button>
+  </div>
+</div>

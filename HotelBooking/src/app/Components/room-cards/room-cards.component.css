@@ -1,0 +1,45 @@
+.card {
+  transition: transform 0.2s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-title {
+  color: #2c3e50;
+  font-size: 1.25rem;
+}
+
+.price {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.features ul li {
+  font-size: 0.9rem;
+  color: #505050;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  border: none;
+  padding: 0.5rem 1rem;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #2980b9;
+}
+
+.btn-primary:disabled {
+  background-color: #bdc3c7;
+}
+
+.text-success {
+  color: #27ae60 !important;
+}
+
+.text-danger {
+  color: #e74c3c !important;
+}

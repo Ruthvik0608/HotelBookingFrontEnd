@@ -1,0 +1,21 @@
+<div class="search-form">
+  <h2>Search for Hotels</h2>
+
+  <form>
+    <div class="form-group">
+      <label for="checkInDate">Check-in Date:</label>
+      <input type="date" [(ngModel)]="searchCriteria.checkInDate" name="checkInDate" required>
+    </div>
+
+    <div class="form-group">
+      <label for="checkOutDate">Check-out Date:</label>
+      <input type="date" [(ngModel)]="searchCriteria.checkOutDate" name="checkOutDate" required>
+    </div>
+
+    <!-- <button (click)="hotelDataService.fetchFilteredHotels(searchCriteria.checkInDate, searchCriteria.checkOutDate); router.navigate(['/app-hotel-card-display'])">
+      Search Hotels
+    </button> -->
+  </form>
+
+  <button (click)="exploreHotels()">Explore All Hotels</button>
+</div>

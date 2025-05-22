@@ -1,0 +1,67 @@
+<div class="container py-5">
+  <!-- Loading State -->
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border text-primary"></div>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <!-- Recent Bookings Table -->
+  <div *ngIf="!loading && !error && recentBookings.length > 0" class="card shadow">
+    <div class="card-header bg-primary text-white p-3">
+      <h3 class="mb-0">Recent Bookings</h3>
+    </div>
+
+    <div class="card-body">
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th>Booking ID</th>
+            <th>Hotel Name</th>
+            <th>Room Type</th>
+            <th>Check-in Date</th>
+            <th>Check-out Date</th>
+            <th>Total Cost</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of recentBookings">
+            <td>#{{ booking.BookingID }}</td>
+            <td>{{ booking.HotelName }}</td>
+            <td>{{ booking.RoomType }}</td>
+            <td>{{ booking.CheckInDate | date:'medium' }}</td>
+            <td>{{ booking.CheckOutDate | date:'medium' }}</td>
+            <td>₹{{ booking.TotalCost }}</td>
+            <td>
+              <span class="badge px-3 py-2"
+                [ngClass]="{
+                  'bg-success': booking.Status === 'Success!' || booking.Status === 'Completed',
+                  'bg-warning': booking.Status === 'Pending',
+                  'bg-danger': booking.Status === 'Cancelled',
+                  'bg-primary': booking.Status === 'Confirmed'
+                }">
+                {{ booking.Status }}
+              </span>
+            </td>
+            <td>
+              <button class="btn btn-outline-success"
+                      (click)="addReview(booking.BookingID)">
+                <i class="bi bi-pencil-square me-2"></i>Add Review
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- No Bookings State -->
+  <div *ngIf="!loading && !error && recentBookings.length === 0" class="alert alert-info">
+    No recent bookings found.
+  </div>
+</div>
